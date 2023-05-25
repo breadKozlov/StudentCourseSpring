@@ -25,32 +25,41 @@
           p:id="2" p:name="Igor" p:age="33" p:surname="Ivanov" p:course-ref="course2" >
     </bean>
 
-    <bean id="trainer1" class="by.kozlov.spring.entity.Trainer" factory-method="getInstance" >
+    <bean id="trainer1" class="by.kozlov.spring.entity.Trainer">
         <constructor-arg name="name" value="Sasha" />
     </bean>
     <bean id="trainer2" class="by.kozlov.spring.entity.Trainer" factory-method="getInstance" >
         <constructor-arg name="name" value="Ivan" />
     </bean>
+    <bean id="trainer3" class="by.kozlov.spring.entity.Trainer">
+        <property name="name"><null/></property>
+    </bean>
 
     <bean id="academy" class="by.kozlov.spring.entity.Academy" >
-        <constructor-arg name="name" value="It Academy" />
-        <constructor-arg name="courseList">
+        <property name="nameOfAcademy" value="It-Academy" />
+        <property name="courseList">
             <list>
                 <ref bean="course1" />
                 <ref bean="course2" />
             </list>
-        </constructor-arg>
-        <constructor-arg name="trainers" >
+        </property>
+        <property name="trainers" >
             <set>
                 <ref bean="trainer1" />
                 <ref bean="trainer2" />
             </set>
-        </constructor-arg>
-        <constructor-arg name="courseTrainer" >
+        </property>
+        <property name="courseTrainer" >
             <map>
-
+                <entry key="#{course1.nameOfCourse}" value-ref="trainer1" />
+                <entry key="#{course2.nameOfCourse}" value-ref="trainer2" />
             </map>
-        </constructor-arg>
+        </property>
+        <property name="namesOfStudents" >
+            <props>
+                <prop key="#{student1.surname}">Good boy</prop>
+                <prop key="#{student2.surname}">Good boy, too</prop>
+            </props>
+        </property>
     </bean>
-
 </beans>

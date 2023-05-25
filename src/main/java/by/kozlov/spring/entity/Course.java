@@ -2,11 +2,13 @@ package by.kozlov.spring.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode
 public class Course implements ICourse{
 
     private Integer id;
@@ -21,6 +23,8 @@ public class Course implements ICourse{
     public void destroy() {
         System.out.println("Destroy Course");
     }
+
+
 
 
 }

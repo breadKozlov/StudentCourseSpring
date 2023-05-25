@@ -13,8 +13,17 @@ import java.util.Map;
 @Data
 public class Academy {
 
-    private String name;
+    private String nameOfAcademy;
     private List<Course> courseList;
     private Set<Trainer> trainers;
     private Map<String,Trainer> courseTrainer;
+    private Map<String,String> namesOfStudents;
+
+    public void init() {
+        System.out.println("Init Academy");
+    }
+
+    public void destroy() {
+        System.out.println("Destroy Academy");
+    }
 }
