@@ -62,4 +62,11 @@
             </props>
         </property>
     </bean>
+    <bean id="salaryTrainer1" class="by.kozlov.spring.entity.SalaryTrainer">
+        <property name="trainer" ref="trainer1" />
+        <property name="payPerHour" value="#{T(java.lang.Math).PI}" />
+        <property name="hours"  value="#{T(Integer).parseInt('123')}"/>
+        <property name="prize"  value="#{salaryTrainer1.hours gt 100 ? 1.5 : 1.0}" />
+        <property name="rank"   value="#{academy.courseList.get(0).cost / 100}" />
+    </bean>
 </beans>

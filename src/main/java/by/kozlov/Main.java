@@ -1,9 +1,6 @@
 package by.kozlov;
 
-import by.kozlov.spring.entity.Academy;
-import by.kozlov.spring.entity.Course;
-import by.kozlov.spring.entity.Student;
-import by.kozlov.spring.entity.Trainer;
+import by.kozlov.spring.entity.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
@@ -44,8 +41,9 @@ public class Main {
             var trainer3 = context.getBean("trainer3",Trainer.class);
             System.out.println(trainer3.getName());
             System.out.println("-------------");
-
-
+            var salary = context.getBean(SalaryTrainer.class);
+            System.out.println("Salary of " + salary.getTrainer().getName() + " is " + salary.getSumSalary());
+            System.out.println("-------------");
         }
     }
 }
