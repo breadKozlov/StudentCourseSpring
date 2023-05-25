@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p = "http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+
+    <bean id="course1" class="by.kozlov.spring.entity.Course" >
+        <constructor-arg name="id" value="1" />
+        <constructor-arg name="nameOfCourse" value="Java EE" />
+        <constructor-arg name="description" value="Strong course of Java Enterprise" />
+        <constructor-arg name="cost" value="125.0" />
+    </bean>
+    <bean id="course2" class="by.kozlov.spring.entity.Course" >
+        <constructor-arg name="id" value="2" />
+        <constructor-arg name="nameOfCourse" value="Java SE" />
+        <constructor-arg name="description" value="Strong course of Java Standard" />
+        <constructor-arg name="cost" value="100.0" />
+    </bean>
+    <bean id="student1" class="by.kozlov.spring.entity.Student"
+    p:id="1" p:name="Pavel" p:age="33" p:surname="Kozlov" p:course-ref="course1" >
+    </bean>
+    <bean id="student2" class="by.kozlov.spring.entity.Student"
+          p:id="2" p:name="Igor" p:age="33" p:surname="Ivanov" p:course-ref="course2" >
+    </bean>
+
+    <bean id="trainer1" class="by.kozlov.spring.entity.Trainer" factory-method="getInstance" >
+        <constructor-arg name="name" value="Sasha" />
+    </bean>
+    <bean id="trainer2" class="by.kozlov.spring.entity.Trainer" factory-method="getInstance" >
+        <constructor-arg name="name" value="Ivan" />
+    </bean>
+
+    <bean id="academy" class="by.kozlov.spring.entity.Academy" >
+        <constructor-arg name="name" value="It Academy" />
+        <constructor-arg name="courseList">
+            <list>
+                <ref bean="course1" />
+                <ref bean="course2" />
+            </list>
+        </constructor-arg>
+        <constructor-arg name="trainers" >
+            <set>
+                <ref bean="trainer1" />
+                <ref bean="trainer2" />
+            </set>
+        </constructor-arg>
+        <constructor-arg name="courseTrainer" >
+            <map>
+
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>
